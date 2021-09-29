@@ -1,4 +1,4 @@
-package Service;
+package dogs.api.Service;
 
 import dogs.api.domain.Breed;
 import org.json.simple.parser.ParseException;

@@ -1,17 +1,15 @@
 package dogs.api;
 
-import Service.DogsService;
+import dogs.api.Service.DogsService;
 import dogs.api.Controller.DogsController;
 import org.json.JSONException;
 import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -29,7 +27,6 @@ public class DogsControllerTest {
 
     @InjectMocks
     private DogsController dogsController;
-
 
     public void setUp() throws IOException, ParseException {
         MockitoAnnotations.openMocks(this);
