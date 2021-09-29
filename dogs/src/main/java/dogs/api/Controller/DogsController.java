@@ -27,7 +27,7 @@ public class DogsController {
 
 
     @GetMapping("/all")
-    public ResponseEntity<?> getAllBreeds() throws IOException, ParseException, JSONException {
+    public String getAllBreeds() throws IOException, ParseException, JSONException {
 
         DogsService dogsService= new DogsService();
 
@@ -37,6 +37,6 @@ public class DogsController {
         System.out.println("json="+br);
         final HttpHeaders httpHeaders= new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-         return  new ResponseEntity<>(str, HttpStatus.OK);
+         return  str;
     }
 }
