@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/")
@@ -21,13 +25,23 @@ public class DogsController {
     DogsServiceInt dogsService;
 
     @GetMapping("/all")
-    public String getAllBreeds() throws IOException, ParseException, JSONException {
-        
+    public Map<String, String> getAllBreeds() throws IOException, ParseException, JSONException {
+
         String str = dogsService.loadDogsBreeds();
         JSONObject br= new JSONObject(str );
-        System.out.println("json="+br);
+
         final HttpHeaders httpHeaders= new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-         return  str;
+        Map<String, String> map = new HashMap<>();
+
+        String s = br.toString().replace("\n", "");
+         s = s.replace("\\", "");
+         s= s.replaceAll(" ", "");
+        s= s.replaceAll("\"", "");
+
+
+        map.put("message", s);
+        System.out.println("json="+map);
+         return map;
     }
 }
